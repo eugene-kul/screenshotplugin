@@ -1,0 +1,10 @@
+<div id="screanshotwidget" class="report-widget">
+    <h3>Theme Preview Screenshot</h3>
+    <p style="color: #999;margin-top: -10px;"><?= e(trans('eugene3993.themepreview::lang.info')) ?></p>
+    <button type="button" class="btn btn-success"
+            data-stripe-load-indicator
+            data-request="<?= $this->getEventHandler('onScreenshot') ?>"
+            data-request-success="$('#screanshotwidget').replaceWith(data.partial)">
+        <?= e(trans('eugene3993.themepreview::lang.btn_label')) ?> | <span class="fa icon-image"></span>
+    </button>
+</div>

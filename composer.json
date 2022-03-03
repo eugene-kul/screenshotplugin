@@ -1,0 +1,8 @@
+{
+    "name": "eugene3993/screenshot-theme-preview",
+    "type": "october-plugin",
+    "description": "Plugin for automatically creating a screenshot of the active theme",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
