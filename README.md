@@ -21,6 +21,12 @@ If you see such an error, it means that you do not have the **images** folder in
 "imagepng(./themes/YOUR_THEME/assets/images/theme-preview.png): failed to open stream: No such file or directory" on line 74 of /home/x/user/your_site.ru/public_html/plugins/eugene3993/themepreview/reportwidgets/ScreenshotWidget.php
 ```
 
+---
+
+> Google Api technologies may change unexpectedly and the plugin may stop working if a **404 error** is displayed when updating the screenshot, please let me know.
+
+---
+
 > The plugin has not been tested on OctoberCMS v2.x
 
 If you have any question about how to use this plugin, please don't hesitate to contact us. We're happy to help you.
