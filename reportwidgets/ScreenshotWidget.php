@@ -30,12 +30,13 @@ class ScreenshotWidget extends ReportWidgetBase {
 
    public function onScreenshot() {
       $domain = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
-      $url_api = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=$domain&screenshot=true";
+      $url_api = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+      $url_params = "?url=$domain&screenshot=true";
 
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_URL, $url_api);
+      curl_setopt($ch, CURLOPT_URL, $url_api.$url_params);
       $api_data = json_decode(curl_exec($ch), true);
       
       if (!curl_errno($ch)) {
@@ -46,8 +47,16 @@ class ScreenshotWidget extends ReportWidgetBase {
          case 429:
             Flash::error("ERROR $http_code! " . e(trans('eugene3993.themepreview::lang.error_429')));
             break;
+         case 404:
+            Flash::error("ERROR $http_code! Could not resolve host: $url_api");
+            break;
          default:
-            Flash::error("ERROR $http_code! " . e(trans('eugene3993.themepreview::lang.later')));
+            if($api_data and $api_data['error']) {
+               $message = $api_data['error']['message'];
+            } else {
+               $message = e(trans('eugene3993.themepreview::lang.later'));
+            }
+            Flash::error("ERROR $http_code! $message");
             break;
          }
       } else {
