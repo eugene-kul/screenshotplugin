@@ -1,5 +1,5 @@
 {
-    "name": "eugene3993/screenshot-theme-preview",
+    "name": "eugene3993/themepreview-plugin",
     "type": "october-plugin",
     "description": "Plugin for automatically creating a screenshot of the active theme",
     "require": {
